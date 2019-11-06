@@ -18,4 +18,5 @@ services:
 
 networks:
   default:
-    name: my_network
+    external:
+      name: my_network

@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  pgadmin:
+    image: 'dpage/pgadmin4'
+    container_name: pgadmin
+    ports:
+      - "80:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@yourdomain.com
+      PGADMIN_DEFAULT_PASSWORD: postgres
+
+networks:
+  default:
+    external:
+      name: my_network

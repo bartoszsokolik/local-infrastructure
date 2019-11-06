@@ -1,14 +1,13 @@
 version: '3.7'
 
 services:
-  postgres:
-    image: 'postgres'
-    container_name: postgres-data
+  mysql:
+    image: 'mysql:5.7'
+    container_name: mysql_data
     ports:
-      - '5432:5432'
+      - "3306:3306"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      MYSQL_ROOT_PASSWORD: root
     volumes:
       - './init.sql:/docker-entrypoint-initdb.d/init.sql'
 
