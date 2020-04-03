@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  influxdb:
+    image: 'influxdb:latest'
+    container_name: 'influxdb'
+    restart: unless-stopped
+    ports:
+      - '8086:8086'
+    volumes:
+      - ./influx/influx_init.sql:/docker-entrypoint-initdb.d/influx_init.iql/
+      - /data/influx-data:/var/lib/influxdb
+    environment:
+      INFLUXDB_HTTP_AUTH_ENABLED: "true"
+      INFLUXDB_ADMIN_USER: admin
+      INFLUXDB_ADMIN_PASSWORD: admin
+
+networks:
+  default:
+    external:
+      name: my_local_network
+

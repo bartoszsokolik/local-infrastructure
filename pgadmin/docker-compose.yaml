@@ -4,8 +4,9 @@ services:
   pgadmin:
     image: 'dpage/pgadmin4'
     container_name: pgadmin
+    restart: unless-stopped
     ports:
-      - "80:80"
+      - '80:80'
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@yourdomain.com
       PGADMIN_DEFAULT_PASSWORD: postgres
@@ -13,4 +14,4 @@ services:
 networks:
   default:
     external:
-      name: my_network
+      name: my_local_network

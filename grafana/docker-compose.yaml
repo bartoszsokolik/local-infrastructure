@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  grafana:
+    image: 'grafana/grafana:latest'
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - '/data/grafana/data:var/lib/grafana'
+
+networks:
+  default:
+    external:
+      name: my_local_network

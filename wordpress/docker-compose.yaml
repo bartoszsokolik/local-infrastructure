@@ -4,6 +4,7 @@ services:
   wordpress:
     image: 'wordpress'
     container_name: wordpress
+    restart: unless-stopped
     ports:
       - '8000:80'
     environment:
@@ -15,4 +16,5 @@ services:
 networks:
   default:
     external:
-      name: my_network
+      name: my_local_network
+

@@ -4,6 +4,7 @@ services:
   postgres:
     image: 'postgres'
     container_name: postgres-data
+    restart: unless-stopped
     ports:
       - '5432:5432'
     environment:
@@ -11,8 +12,17 @@ services:
       POSTGRES_PASSWORD: postgres
     volumes:
       - './init.sql:/docker-entrypoint-initdb.d/init.sql'
+      - 'local-data-db:/var/lib/postgresql/data'
+
+volumes:
+  local-data-db:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/data/local-data-db'
 
 networks:
   default:
     external:
-      name: my_network
+      name: my_local_network
