@@ -8,7 +8,7 @@ services:
     ports:
       - '8086:8086'
     volumes:
-      - ./influx/influx_init.sql:/docker-entrypoint-initdb.d/influx_init.iql/
+      - ./influx/init.sql:/docker-entrypoint-initdb.d/influx_init.iql/
       - /data/influx-data:/var/lib/influxdb
     environment:
       INFLUXDB_HTTP_AUTH_ENABLED: "true"
@@ -19,4 +19,3 @@ networks:
   default:
     external:
       name: my_local_network
-

@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  logstash:
+    image: "docker.elastic.co/logstash/logstash:7.6.2"
+    container_name: logstash
+    restart: unless-stopped
+    command: -f /etc/logstash/conf.d
+    ports:
+      - "9100:9100"
+    volumes:
+      - ./conf/:/etc/logstash/conf.d
+
+networks:
+  default:
+    external:
+      name: my_local_network
